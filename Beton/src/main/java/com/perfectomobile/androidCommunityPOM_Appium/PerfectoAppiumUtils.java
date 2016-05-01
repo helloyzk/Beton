@@ -37,8 +37,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.DriverCommand;
-import org.openqa.selenium.remote.RemoteExecuteMethod;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Reporter;
@@ -46,26 +44,23 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import sun.misc.BASE64Decoder;
-
-import io.appium.java_client.android.AndroidDriver;
-
 import com.google.common.base.Function;
-
 //import com.perfectomobile.selenium.util.EclipseConnector;
 import com.perfectomobile.test.Init;
 
+import io.appium.java_client.android.AndroidDriver;
+import java.util.Base64;
+
 
 public class PerfectoAppiumUtils {
-	private static final String REPOSITORY = "PUBLIC:";
 	protected static HashMap<String,String> sysProp = Init.getSysProp();
 
 	
-	public static AndroidDriver getDriver(DesiredCapabilities cap,int retries, int retryIntervalSeconds)
+	public static AndroidDriver<WebElement> getDriver(DesiredCapabilities cap,int retries, int retryIntervalSeconds)
 	{
 		System.out.println("Current capabilities " + cap.toString());
 
-		AndroidDriver driver;
+		AndroidDriver<WebElement> driver;
 		boolean waitForDevice = true;
 		int index = retries;
 		
@@ -73,7 +68,7 @@ public class PerfectoAppiumUtils {
 			try { 
 	//			cap.setCapability("user", sysProp.get("userName"));
 	//			cap.setCapability("password", sysProp.get("password"));			
-				driver = new AndroidDriver(new URL("http://" + sysProp.get("URL") + "/wd/hub"), cap);
+				driver = new AndroidDriver<WebElement>(new URL("http://" + sysProp.get("URL") + "/wd/hub"), cap);
 				System.out.println(sysProp.get("sysDriverMSG"));
 				return driver;
 
@@ -214,7 +209,7 @@ public class PerfectoAppiumUtils {
 //	}
 	
 	/* Wait until the objects loads until the timeout */
-	public static WebElement fluentWait(final By locator, AndroidDriver driver, long timeout) {
+	public static WebElement fluentWait(final By locator, AndroidDriver<WebElement> driver, long timeout) {
 		 
 		try {
 			 FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
@@ -394,9 +389,9 @@ public class PerfectoAppiumUtils {
 	public String decryptPassword(String message, String key){
 		try {
 	      if (message==null || key==null ) return null;
-	      BASE64Decoder decoder = new BASE64Decoder();
+	      Base64.Decoder decoder = Base64.getDecoder();
 	      char[] keys=key.toCharArray();
-	      char[] mesg=new String(decoder.decodeBuffer(message)).toCharArray();
+	      char[] mesg=new String(decoder.decode(message)).toCharArray();
 
 	      int ml=mesg.length;
 	      int kl=keys.length;
@@ -640,6 +635,8 @@ public class PerfectoAppiumUtils {
 	}
 
 }
+
+//private static final String REPOSITORY = "PUBLIC:";
 
 //private void uploadMedia(String resource, String repositoryKey) throws URISyntaxException, IOException {
 		//repositoryKey = REPOSITORY;

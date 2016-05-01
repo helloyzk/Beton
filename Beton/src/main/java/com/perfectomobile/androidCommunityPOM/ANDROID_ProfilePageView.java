@@ -3,8 +3,6 @@ package com.perfectomobile.androidCommunityPOM;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import com.perfectomobile.utils.PerfectoUtils;
-
 
 // TODO: Auto-generated Javadoc
 /**

@@ -1,11 +1,9 @@
 package com.perfectomobile.androidCommunityPOM_Appium;
 
-import io.appium.java_client.android.AndroidDriver;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.WebElement;
 
-import com.perfectomobile.utils.PerfectoUtils;
+import io.appium.java_client.android.AndroidDriver;
 
 
 // TODO: Auto-generated Javadoc
@@ -37,7 +35,7 @@ public class ANDROID_ProfilePageView extends ANDROID_CommunityBaseView {
  *
  * @param driver the driver
  */
-public ANDROID_ProfilePageView(AndroidDriver driver) {
+public ANDROID_ProfilePageView(AndroidDriver<WebElement> driver) {
 		super(driver);
 	}
 	

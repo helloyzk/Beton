@@ -4,15 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.poi.hssf.usermodel.HSSFHyperlink;
-import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -21,14 +17,12 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.util.WorkbookUtil;
 import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFHyperlink;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.perfectomobile.dataDrivers.*;
+import com.perfectomobile.dataDrivers.Lock;
 
 
 /**
@@ -56,16 +50,16 @@ public class ExcelDriver {
 	private static Lock lock;
 	
 	public ExcelDriver(){
-		if(this.lock == null){
-			this.lock= new Lock();
+		if(lock == null){
+			lock= new Lock();
 		}
 	}
 	
 	public ExcelDriver(String path, String sheetName, boolean addSheet) throws Exception{
 		// Get Excel file path
 	  	//this.filePath = new File("").getAbsolutePath();
-		if(this.lock == null){
-			this.lock= new Lock();
+		if(lock == null){
+			lock= new Lock();
 		}
 	  	this.filePath = path;
 	  
@@ -327,7 +321,6 @@ public class ExcelDriver {
 		try{
 			this.refreshSheet();
 			int lastRow = this.sheet.getPhysicalNumberOfRows();
-			XSSFRow row = this.sheet.getRow(lastRow);
 			for(Map.Entry<String, String> entry : properties.entrySet()){
 				this.setCellByColName(lastRow, entry.getKey(), entry.getValue());
 				if(entry.getKey().equals("screenshot")){
@@ -414,6 +407,7 @@ public class ExcelDriver {
 		return -1;
 	}
 	
+	@SuppressWarnings("unused")
 	private int findCellColumnByValue(String value){
 		int colNum;
 		
@@ -428,6 +422,7 @@ public class ExcelDriver {
 		return -1;
 	}
 	
+	@SuppressWarnings("unused")
 	private int[] findCellByValue(String value){
 		int[] cellCoordinates = new int[2];
 		
@@ -479,6 +474,7 @@ public class ExcelDriver {
 		setCellColor(row, newCellIndex, CellColors.GREEN);
 	}
 	
+	@SuppressWarnings("unused")
 	private void clearLastCell(int row){
 		int lastCellIndex = this.sheet.getRow(row).getLastCellNum();
 		setCellAsString(row, lastCellIndex, "");

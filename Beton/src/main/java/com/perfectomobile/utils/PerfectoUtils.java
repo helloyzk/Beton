@@ -1,8 +1,5 @@
 package com.perfectomobile.utils;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -10,7 +7,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -25,10 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -45,24 +37,20 @@ import org.openqa.selenium.remote.RemoteExecuteMethod;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Reporter;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import sun.misc.BASE64Decoder;
 
 import com.google.common.base.Function;
 //import com.perfectomobile.selenium.util.EclipseConnector;
 import com.perfectomobile.test.Init;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
+import java.util.Base64;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class PerfectoUtils.
  */
 public class PerfectoUtils {
-	
-	/** The Constant REPOSITORY. */
-	private static final String REPOSITORY = "PUBLIC:";
 	
 	/** The sys prop. */
 	protected static HashMap<String,String> sysProp = Init.getSysProp();
@@ -95,10 +83,10 @@ public class PerfectoUtils {
 				Object platformNameObj = cap.getCapability("platformName");
 				if(automationNameObj != null && automationNameObj.toString().toLowerCase().equals("appium")){
 					if(platformNameObj != null && platformNameObj.toString().toLowerCase().equals("ios")){
-						driver = new IOSDriver(new URL(sysProp.get("perfectoURL")), cap);
+						driver = new IOSDriver<WebElement>(new URL(sysProp.get("perfectoURL")), cap);
 					}
 					else if(platformNameObj != null && platformNameObj.toString().toLowerCase().equals("android")){
-						driver = new AndroidDriver(new URL(sysProp.get("perfectoURL")), cap);
+						driver = new AndroidDriver<WebElement>(new URL(sysProp.get("perfectoURL")), cap);
 					}
 					else{
 						throw new Exception("Illegal to use automationName=Appium without platformName");
@@ -287,6 +275,7 @@ public class PerfectoUtils {
 	 */
 	public static List<String> getContextHandles(RemoteWebDriver driver) {		  
 		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
+		@SuppressWarnings("unchecked")
 		List<String> contexts =  (List<String>) executeMethod.execute(DriverCommand.GET_CONTEXT_HANDLES, null);
 		return contexts;
 	}
@@ -595,9 +584,9 @@ public class PerfectoUtils {
 	public static String decryptPassword(String message, String key){
 		try {
 	      if (message==null || key==null ) return null;
-	      BASE64Decoder decoder = new BASE64Decoder();
+	      Base64.Decoder decoder = Base64.getDecoder();
 	      char[] keys=key.toCharArray();
-	      char[] mesg=new String(decoder.decodeBuffer(message)).toCharArray();
+	      char[] mesg=new String(decoder.decode(message)).toCharArray();
 
 	      int ml=mesg.length;
 	      int kl=keys.length;
@@ -987,6 +976,9 @@ public class PerfectoUtils {
 	}
 
 }
+
+/** The Constant REPOSITORY. */
+//private static final String REPOSITORY = "PUBLIC:";
 
 //private void uploadMedia(String resource, String repositoryKey) throws URISyntaxException, IOException {
 		//repositoryKey = REPOSITORY;

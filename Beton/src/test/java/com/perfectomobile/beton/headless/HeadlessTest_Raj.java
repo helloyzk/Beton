@@ -1,24 +1,19 @@
 package com.perfectomobile.beton.headless;
 
-import java.io.IOException;
-import java.net.URL;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
 public class HeadlessTest_Raj {
-	public static AndroidDriver andDriver;
-	public static IOSDriver iosDriver;
+	public static AndroidDriver<WebElement> andDriver;
+	public static IOSDriver<WebElement> iosDriver;
 	
 	@Test
 	public void test_IOS(ITestContext context) throws Exception{

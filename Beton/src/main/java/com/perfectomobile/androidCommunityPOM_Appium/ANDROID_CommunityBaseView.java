@@ -3,19 +3,15 @@
  */
 package com.perfectomobile.androidCommunityPOM_Appium;
 
-import io.appium.java_client.android.AndroidDriver;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 
 import com.perfectomobile.utils.PerfectoUtils;
-import com.perfectomobile.utils.PerfectoUtils.*;
-import com.perfectomobile.utils.VisualDriverControl;
+
+import io.appium.java_client.android.AndroidDriver;
 
 
 
@@ -30,7 +26,7 @@ import com.perfectomobile.utils.VisualDriverControl;
 public class ANDROID_CommunityBaseView {
 	
 	/** The driver. */
-	AndroidDriver driver;	
+	AndroidDriver<WebElement> driver;	
 		
 	/** Page element: The action bar title. */
 	
@@ -66,7 +62,7 @@ public class ANDROID_CommunityBaseView {
 	 * @param driver the AppiumDriver
 	 */
 	// Class constructor
-	public ANDROID_CommunityBaseView(AndroidDriver driver){
+	public ANDROID_CommunityBaseView(AndroidDriver<WebElement> driver){
 		this.driver = driver;
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);			
 	}

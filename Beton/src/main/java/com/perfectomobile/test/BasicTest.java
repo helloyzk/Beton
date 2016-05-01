@@ -23,7 +23,6 @@ import org.testng.annotations.DataProvider;
 
 import com.perfectomobile.dataDrivers.excelDriver.ExcelDriver;
 import com.perfectomobile.utils.PerfectoUtils;
-import com.perfectomobile.utils.PerfectoUtils.Properties;
 
 
 
@@ -430,6 +429,7 @@ public abstract class BasicTest {
 		detailedResultSheet.addResultsToDetailedSheet(testProperties);
 		
 	}
+	@SuppressWarnings("unused")
 	public void writeResultsToExcel(String testName, String[] params, boolean result){
 		String url, user, resourceType, manufacturer, model, OSType,
 		OSVersion, carrier, browserName, browserVersion, platform;
@@ -455,6 +455,7 @@ public abstract class BasicTest {
 			platform = driver.getCapabilities().getPlatform().toString();
 		}
 		
+		// XXX We never write anything here????
 	}
 	
 	/**
@@ -492,6 +493,7 @@ public abstract class BasicTest {
 	 */
 	public List<String> getContextHandles(RemoteWebDriver driver) {		  
 		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
+		@SuppressWarnings("unchecked")
 		List<String> contexts =  (List<String>) executeMethod.execute(DriverCommand.GET_CONTEXT_HANDLES, null);
 		return contexts;
 	}

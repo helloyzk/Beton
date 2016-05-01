@@ -1,25 +1,16 @@
 package com.perfectomobile.beton;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
-
-
-
-//import com.perfectomobile.test.BasicTest;
-import com.perfectomobile.test.BasicTest_Android;
-import com.perfectomobile.test.Init;
-import com.perfectomobile.androidCommunityPOM_Appium.PerfectoAppiumUtils;
 import com.perfectomobile.androidCommunityPOM_Appium.ANDROID_CommunityBaseView;
 import com.perfectomobile.androidCommunityPOM_Appium.ANDROID_ProfilePageView;
 import com.perfectomobile.dataDrivers.excelDriver.ExcelDriver;
+//import com.perfectomobile.test.BasicTest;
+import com.perfectomobile.test.BasicTest_Android;
 
 // TODO: Auto-generated Javadoc
 /**

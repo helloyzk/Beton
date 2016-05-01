@@ -3,8 +3,6 @@
  */
 package com.perfectomobile.androidCommunityPOM;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -12,7 +10,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 
 import com.perfectomobile.utils.PerfectoUtils;
-import com.perfectomobile.utils.PerfectoUtils.*;
+import com.perfectomobile.utils.PerfectoUtils.LabelPosition;
 import com.perfectomobile.utils.VisualDriverControl;
 
 

@@ -1,14 +1,12 @@
 package com.perfectomobile.test;
 
-import io.appium.java_client.android.AndroidDriver;
-
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.DriverCommand;
 import org.openqa.selenium.remote.RemoteExecuteMethod;
@@ -23,11 +21,13 @@ import org.testng.annotations.DataProvider;
 import com.perfectomobile.androidCommunityPOM_Appium.PerfectoAppiumUtils;
 import com.perfectomobile.dataDrivers.excelDriver.ExcelDriver;
 
+import io.appium.java_client.android.AndroidDriver;
+
 
 
 public abstract class BasicTest_Android {
 	
-	protected AndroidDriver driver;
+	protected AndroidDriver<WebElement> driver;
 	protected ExcelDriver ed;
 	protected String testName;
 	protected String testCycle;
@@ -183,6 +183,7 @@ public abstract class BasicTest_Android {
 
 	public List<String> getContextHandles(RemoteWebDriver driver) {		  
 		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
+		@SuppressWarnings("unchecked")
 		List<String> contexts =  (List<String>) executeMethod.execute(DriverCommand.GET_CONTEXT_HANDLES, null);
 		return contexts;
 	}

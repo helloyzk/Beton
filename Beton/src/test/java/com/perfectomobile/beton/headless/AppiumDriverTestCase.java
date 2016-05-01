@@ -1,3 +1,6 @@
+
+
+
 package com.perfectomobile.beton.headless;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -13,15 +16,17 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.logging.*;
-import org.openqa.selenium.remote.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.DriverCommand;
+import org.openqa.selenium.remote.RemoteExecuteMethod;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -64,6 +69,7 @@ public class AppiumDriverTestCase {
 		System.out.println("Run ended");
 	}
 	
+	@SuppressWarnings("unused")
 	private static void sleep(long millis) {
 		try {
 			Thread.sleep(millis);
@@ -77,6 +83,7 @@ public class AppiumDriverTestCase {
 	 * Example: downloadReport(driver, "pdf", "C:\\test\\report");
 	 * 
 	 */
+	@SuppressWarnings("unused")
 	private static void downloadReport(RemoteWebDriver driver, String type, String fileName) throws IOException {
 		try { 
 			String command = "mobile:report:download"; 
@@ -98,6 +105,7 @@ public class AppiumDriverTestCase {
 	 * downloadAttachment("video", "C:\\test\\video", "flv");
 	 * downloadAttachment("image", "C:\\test\\Image", "jpg");
 	 */
+	@SuppressWarnings("unused")
 	private static void downloadAttachment(RemoteWebDriver driver, String type, String fileName, String suffix) throws IOException {
 		try {
 			String command = "mobile:report:attachment";
@@ -129,6 +137,7 @@ public class AppiumDriverTestCase {
 	}
 
 
+	@SuppressWarnings("unused")
 	private static void switchToContext(RemoteWebDriver driver, String context) {
 		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
 		Map<String,String> params = new HashMap<String,String>();
@@ -136,14 +145,17 @@ public class AppiumDriverTestCase {
 		executeMethod.execute(DriverCommand.SWITCH_TO_CONTEXT, params);
 	}
 
+	@SuppressWarnings("unused")
 	private static String getCurrentContextHandle(RemoteWebDriver driver) {		  
 		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
 		String context =  (String) executeMethod.execute(DriverCommand.GET_CURRENT_CONTEXT_HANDLE, null);
 		return context;
 	}
 
+	@SuppressWarnings("unused")
 	private static List<String> getContextHandles(RemoteWebDriver driver) {		  
 		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
+		@SuppressWarnings("unchecked")
 		List<String> contexts =  (List<String>) executeMethod.execute(DriverCommand.GET_CONTEXT_HANDLES, null);
 		return contexts;
 	}
@@ -154,6 +166,7 @@ public class AppiumDriverTestCase {
 	 * repositoryKey - key in the repository. E.g. PRIVATE:apps\\ApiDemos.apk
 	 * 
 	 */
+	@SuppressWarnings("unused")
 	private static void uploadMedia(String host, String user, String password, String path, String repositoryKey) throws IOException {
 		MediaUploader uploader = new MediaUploader();
 		uploader.upload(host, user, password, path, repositoryKey);

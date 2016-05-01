@@ -1,13 +1,12 @@
 package com.perfectomobile.androidCommunityPOM_Appium;
 
-import io.appium.java_client.android.AndroidDriver;
-
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.WebElement;
 
-import com.perfectomobile.utils.*;
-import com.perfectomobile.utils.PerfectoUtils.*;
+import com.perfectomobile.utils.PerfectoUtils;
+
+import io.appium.java_client.android.AndroidDriver;
 
 
 // TODO: Auto-generated Javadoc
@@ -25,7 +24,7 @@ public class ANDROID_SearchResultsView extends ANDROID_CommunityBaseView{
  *
  * @param driver the driver
  */
-public ANDROID_SearchResultsView(AndroidDriver driver) {
+public ANDROID_SearchResultsView(AndroidDriver<WebElement> driver) {
 		super(driver);
 	}
 	

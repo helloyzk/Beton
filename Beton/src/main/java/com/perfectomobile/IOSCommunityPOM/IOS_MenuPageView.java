@@ -3,7 +3,6 @@ package com.perfectomobile.IOSCommunityPOM;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import com.perfectomobile.androidCommunityPOM.ANDROID_ProfilePageView;
 import com.perfectomobile.utils.PerfectoUtils;
 
 public class IOS_MenuPageView extends IOS_CommunityBaseView{

@@ -4,14 +4,12 @@ import java.io.IOException;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
 import com.perfectomobile.dataDrivers.excelDriver.ExcelDriver;
 import com.perfectomobile.test.BasicTest;
-import com.perfectomobile.utils.PerfectoUtils;
 import com.perfectomobile.webCommunityPOM.WebCommunityBaseView;
 
 public class CommunitySignIn extends BasicTest {

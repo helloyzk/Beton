@@ -21,6 +21,7 @@
          <url>file://../mvn-repo/snapshot</url>
       </repository>
    </distributionManagement>
+   
    <build>
       <resources>
          <resource>

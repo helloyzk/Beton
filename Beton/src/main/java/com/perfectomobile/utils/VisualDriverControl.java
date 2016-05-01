@@ -33,7 +33,6 @@ public class VisualDriverControl {
 	public static void clickByTextOffset(RemoteWebDriver driver, String label,  LabelPosition labelPosition, String offset){
 		//Get current context
 		String initialContext = PerfectoUtils.getCurrentContextHandle(driver);
-		String shift;		
 		PerfectoUtils.switchToContext(driver, "VISUAL");
 				
 		String command = "mobile:text:select";
