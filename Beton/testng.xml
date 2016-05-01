@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="testList" parallel="methods" thread-count="5">	
-	
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="testList" parallel="false" thread-count="5">	
 	
->>>>>>> branch 'master' of https://github.com/PerfectoMobileSA/Beton.git
 	<test name="Test">
 		<classes>
 		    <class name="com.perfectomobile.beton.TestClass" />
