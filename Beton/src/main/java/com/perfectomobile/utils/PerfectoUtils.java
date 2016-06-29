@@ -101,6 +101,8 @@ public class PerfectoUtils {
 			} catch (Exception e) {
 				index--;
 				System.out.println("device wasn't allocated successfully: " + cap.toString() +"\n Retries left: " + index);
+				System.out.println(e.getMessage());
+				e.printStackTrace();
 				
 				sleep(retryIntervalSeconds * 1000);
 				if (e.getMessage().contains("command browser open")) {
