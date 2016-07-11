@@ -9,7 +9,7 @@ public class Lock{
 	}
 
 	public synchronized void lock() throws Exception{
-		int waitCycles = 20;
+		int waitCycles = 300;
 		int waited = 0;
 		while(isLocked){
 			wait(10000);
